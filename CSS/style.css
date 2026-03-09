@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,9 +9,9 @@
 :root {
   --primary: #8b1d3b;
   --accent: #f6c1cc;
-  --light: #ffffff;
+  --light: #fff5f7; /* soft pink-cream to match theme */
   --muted: #666;
-  --bg: #faf7f8;
+  --bg: linear-gradient(135deg, #f6c1cc 50%, #d4af37 100%);
   /* convenience aliases used throughout the stylesheet */
   --primary-color: var(--primary);
   --secondary-color: var(--accent);
@@ -25,6 +27,13 @@ body {
   scroll-behavior: smooth;
   /* base responsive font size */
   font-size: clamp(14px, 1.2vw + 12px, 18px);
+  scrollbar-width: none; /* hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* hide scrollbar for IE/Edge */
+}
+
+/* Hide scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -235,7 +244,6 @@ ul {
 /* New Arrivals */
 .new-arrivals {
   padding: 90px 60px;
-  background: var(--light);
 }
 
 .section-header {
@@ -302,7 +310,6 @@ ul {
 /* WHY SHOP WITH US */
 section {
   padding: 80px 60px;
-  background: #fff;
 }
 
 .section-title {
@@ -393,7 +400,10 @@ section {
   gap: 50px;
   align-items: center;
   padding: 100px 60px;
-  background: #fafafa;
+}
+
+.about.container {
+  background-color: var(--light);
 }
 
 .about h2 {
@@ -464,7 +474,6 @@ section {
 /* Testimonials */
 .testimonials {
   padding: 100px 60px;
-  background: var(--light);
   text-align: center;
 }
 
@@ -693,6 +702,14 @@ section {
 
   .testimonial-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about h2 {
+    margin-top: 20px; /* add space from top on mobile */
+  }
+
+  .about.container {
+    padding: 40px 20px;
   }
 
   /* Mobile menu: full-width dropdown from top (40% screen height) */
